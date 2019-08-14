@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
-
+import {HttpClient} from '@angular/common/http';
+// import {User} from './interfaces/user.interface'; This doesnt happen here happens somewhere else
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+
+    pullUserInfo(givenID){
+      return this.http.get(`https://jsonplaceholder.typicode.com/users/${givenID}`)
+    }
+
+
 }
 
 // HTTP Client Injection

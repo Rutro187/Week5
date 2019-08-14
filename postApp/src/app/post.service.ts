@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+
+pullPostById(givenId){
+  return this.http.get(`https://jsonplaceholder.typicode.com/posts/${givenId}`)
+}
+pullPostByUserId(givenId){
+  return this.http.get(`https://jsonplaceholder.typicode.com/posts?${givenId}`)
+}
 }
 
 
